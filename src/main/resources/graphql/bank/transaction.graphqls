@@ -1,0 +1,4 @@
+type Transaction {
+    amount: Float
+    name: String
+}

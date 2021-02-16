@@ -8,6 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * @author Gemuruh Geo Pratama
@@ -16,10 +19,17 @@ import java.util.Collections;
 @Component
 @Slf4j
 public class ClientResolver implements GraphQLResolver<BankAccount> {
-    public Client client(BankAccount bankAccount) {
-        log.info("Start Client Resolver");
-        //throw new GraphQLException("Something went wrong from client"); //Testing
+    private final ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
-        return Client.builder().firstName("Gemuruh").lastName("Geo").middleNames(Collections.singletonList("pratama")).build();
+    public CompletableFuture<Client> client(BankAccount bankAccount) {
+        log.info("Start Client Resolver");
+        return CompletableFuture.supplyAsync(()->{
+            log.info("Retreive Client from another thread");
+            return Client.builder()
+                .firstName("Gemuruh")
+                .lastName("Geo")
+                .middleNames(Collections.singletonList("pratama")).build();
+        }, executorService);
+
     }
 }

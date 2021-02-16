@@ -3,6 +3,7 @@ package kai.id.graphql.domain.bank;
 import lombok.Builder;
 import lombok.Value;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -15,4 +16,5 @@ public class BankAccount {
     UUID id;
     Client client;
     Currency currency;
+    List<Transaction> transactions;
 }
