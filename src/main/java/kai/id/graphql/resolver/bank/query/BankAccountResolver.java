@@ -1,4 +1,4 @@
-package kai.id.graphql.resolver;
+package kai.id.graphql.resolver.bank.query;
 
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import kai.id.graphql.domain.bank.BankAccount;
@@ -20,12 +20,6 @@ public class BankAccountResolver implements GraphQLQueryResolver {
     public BankAccount bankAccount(UUID id) {
         log.info("Retrieving Bank Account id: {}", id);
         return BankAccount.builder().id(id).currency(Currency.IDR)
-                .client(
-                        Client.
-                                builder()
-                                .firstName("Gemuruh")
-                                .lastName("Pratama")
-                                .middleNames(Arrays.asList("Geo")).build())
                 .build();
     }
 }
