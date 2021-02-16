@@ -2,12 +2,10 @@ package kai.id.graphql.resolver.bank.query;
 
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import kai.id.graphql.domain.bank.BankAccount;
-import kai.id.graphql.domain.bank.Client;
 import kai.id.graphql.domain.bank.Currency;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
 import java.util.UUID;
 
 /**

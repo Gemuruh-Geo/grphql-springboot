@@ -16,6 +16,6 @@ graphql:
     # specification and expectations of most clients, so use this option with caution
     introspection-enabled: true
   servlet:
-    maxQueryDepth: 100
+    maxQueryDepth: 7
     exception-handlers-enabled: true
     tracingEnabled: false
